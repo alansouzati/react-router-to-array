@@ -34,6 +34,10 @@ console.log(reactRouterToArray(
 ); //outputs: ['/', '/about', '/about/home', '/users']
 ```
 
+### Use case
+
+I wrote this library mainly to use in conjuction with [static-site-generator-webpack-plugin](https://www.npmjs.com/package/static-site-generator-webpack-plugin)
+
 ### License
 
 [MIT](https://github.com/alansouzati/react-router-to-array/blob/master/LICENSE)
