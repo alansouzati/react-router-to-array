@@ -16,6 +16,7 @@ npm install react-router-to-array
 
 ```javascript
 import React from 'react';
+import { Route, IndexRoute } from 'react-router';
 import reactRouterToArray from 'react-router-to-array';
 // or var reactRouterToArray = require('react-router-to-array');
 
