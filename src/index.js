@@ -1,12 +1,22 @@
 function extractRoute (route, prefix) {
   const path = route.props && route.props.path ? route.props.path : route.path;
+  let paths = [];
+
   if (!path) {
-    return [];
+    if (Array.isArray(route)) {
+      route.forEach((r) => {
+        paths = paths.concat(extractRoute(r, prefix));
+      });
+
+      return paths;
+    } else {
+      return [];
+    }
   }
   const currentPath = (
     `${prefix || ''}${path.replace(/\//, '')}`
   );
-  let paths = [];
+
   if (!/:|\*/.test(currentPath)) {
     paths.push(`${currentPath.startsWith('/') ? '' : '/'}${currentPath}`);
 

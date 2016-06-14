@@ -48,7 +48,27 @@ test('loads a plain react-router', function(t) {
   ].join());
 });
 
-test('loads an array of routes', function(t) {
+test('loads an array of react-router components', function(t) {
+  t.plan(1);
+
+  let output = reactRouterToArray(
+    <Route path="/" component={FakeComponent}>
+      <IndexRoute component={FakeComponent} />,
+      {[
+        <Route path="about" component={FakeComponent}>
+          <Route path="home" component={FakeComponent} />
+        </Route>,
+        <Route path="users" component={FakeComponent} />
+      ]}
+    </Route>
+  );
+
+  t.equal(output.join(), [
+    '/', '/about', '/about/home', '/users'
+  ].join());
+});
+
+test('loads an array of plain routes', function(t) {
   t.plan(1);
 
   let output = reactRouterToArray(

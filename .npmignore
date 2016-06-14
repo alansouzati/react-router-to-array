@@ -3,3 +3,4 @@ test
 .babelrc
 .gitignore
 .editorconfig
+.travis.yml
