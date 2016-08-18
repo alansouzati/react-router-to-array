@@ -137,3 +137,40 @@ test('ignores no match route', function(t) {
     '/', '/about'
   ].join());
 });
+
+test('loads children of undefined routes', function(t) {
+  t.plan(1);
+
+  let output = reactRouterToArray(
+    <Route>
+      <Route path="/" component={FakeComponent}>
+        <Route>
+          <Route path="about" component={FakeComponent} />
+        </Route>
+      </Route>
+    </Route>
+  );
+
+  t.equal(output.join(), ['/', '/about'].join());
+})
+
+test('loads children of undefined plain routes', function(t) {
+  t.plan(1);
+
+  let output = reactRouterToArray(
+    [
+      {childRoutes: [
+        {
+          path: '/', component: FakeComponent,
+          childRoutes: [
+            {childRoutes: [
+              {path: 'about', component: FakeComponent}
+            ]}
+          ]
+        }
+      ]}
+    ]
+  );
+
+  t.equal(output.join(), ['/', '/about'].join());
+})
