@@ -34,7 +34,7 @@
     "babel-preset-react": "^6.1.18",
     "tape": "^4.0.0"
   },
-  "dependencies": {
+  "peerDependencies": {
     "react": "^15.1.0",
     "react-router": "^2.4.1"
   }
