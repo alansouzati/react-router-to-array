@@ -174,3 +174,22 @@ test('loads children of undefined plain routes', function(t) {
 
   t.equal(output.join(), ['/', '/about'].join());
 })
+
+test('loads chidren that have deep paths', function(t) {
+  t.plan(1);
+
+  let output = reactRouterToArray(
+    <Route>
+      <Route path="one">
+        <IndexRoute component={FakeComponent} />
+        <Route path="two/three/four" component={FakeComponent} />
+        <Route path="two/three/five" component={FakeComponent} />
+        <Route path="two/three/six" component={FakeComponent} />
+      </Route>
+    </Route>
+  );
+
+  t.equal(output.join(), [
+    '/one', '/one/two/three/four', '/one/two/three/five', '/one/two/three/six'
+  ].join());
+})
