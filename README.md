@@ -31,7 +31,7 @@ console.log(reactRouterToArray(
     <Route path="users" component={FakeComponent} />
     <Route path="*" component={FakeComponent} />
   </Route>)
-); //outputs: ['/', '/about', '/about/home', '/users']
+)); //outputs: ['/', '/about', '/about/home', '/users']
 ```
 
 ### Use case
